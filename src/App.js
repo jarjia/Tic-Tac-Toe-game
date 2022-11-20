@@ -97,7 +97,13 @@ function App() {
           </div>
         })}
       </div>
-      <button type='button' className='btn' onClick={handleReset}>{(haveWon.o === true || haveWon.x === true || haveWon.d === true) ? 'Play again' : 'Reset'}</button>
+      <button type='button' className='btn' onClick={handleReset}>
+        {haveWon.x && <span style={{fontWeight: 600, letterSpacing: '1px', fontSize: '20px'}}>X Won!</span>}
+        {haveWon.o && <span style={{fontWeight: 600, letterSpacing: '1px', fontSize: '20px'}}>O Won!</span>}
+        {haveWon.d && <span style={{fontWeight: 600, letterSpacing: '1px', fontSize: '20px'}}>Draw</span>}
+        {(haveWon.x || haveWon.o || haveWon.d) && <br></br>}
+        {(haveWon.o === true || haveWon.x === true || haveWon.d === true) ? 'Play again' : 'Reset'}
+      </button>
     </div>
   );
 }
